@@ -23,13 +23,14 @@ INSTALLED_APPS = [
     'rest_framework',  # Add DRF
     'rest_framework.authtoken',  # Token Authentication
     'blog',  # Your app
+    'django_extensions',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -40,7 +41,7 @@ ROOT_URLCONF = 'blogging_platform.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],  # Add this to include your templates folder
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

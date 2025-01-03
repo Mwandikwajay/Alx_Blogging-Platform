@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Post</title>
+</head>
+<body>
+    <h1>Delete Post</h1>
+    <form id="delete-post-form">
+        <label for="post-id">Post ID:</label>
+        <input type="number" id="post-id" required>
+        <br>
+        <button type="submit">Delete Post</button>
+    </form>
+    <script>
+        document.getElementById("delete-post-form").addEventListener("submit", async (event) => {
+            event.preventDefault();
+            const postId = document.getElementById("post-id").value;
+            const token = localStorage.getItem("token");
+
+            const response = await fetch(`http://127.0.0.1:8000/api/posts/${postId}/`, {
+                method: "DELETE",
+                headers: { "Authorization": `Token ${token}` },
+            });
+
+            if (response.ok) {
+                alert("Post deleted successfully!");
+                window.location.href = "/api";  // Redirect after deletion
+            } else {
+                alert("Failed to delete post!");
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Posts</title>
+</head>
+<body>
+    <h1>All Blog Posts</h1>
+    <div id="posts-container"></div>
+    <a href="/create_post/">Create New Post</a>
+
+    <script>
+        const API_URL = "http://127.0.0.1:8000/api/posts/";
+
+        // Fetch and display all posts
+        async function fetchPosts() {
+            const response = await fetch(API_URL);
+            const posts = await response.json();
+            const postsContainer = document.getElementById("posts-container");
+
+            posts.forEach(post => {
+                const postElement = document.createElement("div");
+                postElement.innerHTML = `
+                    <h3>${post.title}</h3>
+                    <p><strong>Author:</strong> ${post.author}</p>
+                    <p><strong>Category:</strong> ${post.category ? post.category : "Uncategorized"}</p>
+                    <p><strong>Tags:</strong> ${post.tags && post.tags.length > 0 ? post.tags.join(", ") : "No tags"}</p>
+                    <p>${post.content}</p>
+                    <a href="/update_post/${post.id}">Update</a>
+                    <a href="/delete_post/${post.id}">Delete</a>
+                    <hr>
+                `;
+                postsContainer.appendChild(postElement);
+            });
+        }
+
+        fetchPosts();
+    </script>
+</body>
+</html>
