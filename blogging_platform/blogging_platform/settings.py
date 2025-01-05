@@ -24,7 +24,6 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',  # Token Authentication
     'blog',  # Your app
     'django_extensions',
-    'drf_yasg',
 ]
 
 MIDDLEWARE = [
