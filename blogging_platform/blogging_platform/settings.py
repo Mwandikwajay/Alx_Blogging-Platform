@@ -8,7 +8,7 @@ SECRET_KEY = 'django-insecure-osd8=tual+^!hs_65j2qmmih8a3^5^iyoi^24%v2&@$8l)*$n%
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['JudithMusangi.pythonanywhere.com']
 
 
 # Application definition
@@ -59,10 +59,15 @@ WSGI_APPLICATION = 'blogging_platform.wsgi.application'
 # Database
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'JudithMusangi$Judith123',
+        'USER': 'JudithMusangi',
+        'PASSWORD': 'Jayjay32#',
+        'HOST': 'JudithMusangi.mysql.pythonanywhere-services.com',
+        'PORT': '3306',
     }
 }
+
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
